@@ -188,10 +188,10 @@
 		<div data-location="North Point" data-style="Chinese" data-expense="0-50" data-distance="Far" data-name="Wing's Catering">Wing's Catering</div>
 		<div data-location="North Point" data-style="Japanese" data-expense="50-100" data-distance="Near" data-name="Ajisen Ramen">Ajisen Ramen</div>
 		<div data-location="North Point" data-style="Chinese" data-expense="0-50" data-distance="Far" data-name="A One">A One</div>
-		<div data-location="North Point" data-style="Cafe" data-expense="0-50" data-distance="Near" data-name="Pacific Coffe">Pacific Coffee</div>
+		<div data-location="North Point" data-style="Cafe" data-expense="0-50" data-distance="Near" data-name="Pacific Coffee">Pacific Coffee</div>
 		<div data-location="North Point" data-style="Dim Sum" data-expense="50-100" data-distance="Near" data-name="Yi Yuen">Yi Yuen</div>
 		<div data-location="Quarry Bay" data-style="Thai" data-expense="0-50" data-distance="Medium" data-name="Thai Cuisine">Thai Cuisine</div>
-		<div data-location="Quarry Bay" data-style="Vegetarian" data-expense="0-50" data-distance="Medium" data-name="Cook Light Caf">Cook Light Cafe</div>
+		<div data-location="Quarry Bay" data-style="Vegetarian" data-expense="0-50" data-distance="Medium" data-name="Cook Light Cafe">Cook Light Cafe</div>
 		<div data-location="Quarry Bay" data-style="Cafe" data-expense="0-50" data-distance="Near" data-name="Java Mama">Java Mama</div>
 		<div data-location="Quarry Bay" data-style="Cafe" data-expense="0-50" data-distance="Near" data-name="Cafe 21">Cafe 21</div>
 	</div>
