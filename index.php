@@ -30,26 +30,29 @@
 		);
 		
 		$('.selector span').click(function(){
-			var metadata = $(this).data("type") == 'restaurant' ? "data-name" : "data-" + $(this).data("type");
-			$('div[' + metadata + '="' + $(this).html() + '"]').hide();
-			$(this).css("text-decoration", "line-through");
-			var colors = refresh_pie();
-			var size = colors.length;
-			var distribution = [1,1,1,1,1,1,1,1,1,1,1,1,1,1].slice(0,size);
-			$('#pie').sparkline(
-				distribution,{
-					type	: 'pie',
-					width	: 500,
-					height	: 500,
-					sliceColors	: colors
-				}
-			);
+			if($(this).css("text-decoration") == "none") {
+				var metadata = $(this).data("type") == 'restaurant' ? "data-name" : "data-" + $(this).data("type");
+				$('div[' + metadata + '="' + $(this).html() + '"]').hide();
+				$(this).css("text-decoration", "line-through");
+				refresh_pie();
+			}
+			else{
+				var metadata = $(this).data("type") == 'restaurant' ? "data-name" : "data-" + $(this).data("type");
+				$('div[' + metadata + '="' + $(this).html() + '"]').show();
+				$(this).css("text-decoration", "none");
+				refresh_pie();
+			}
+
 		})
 		
-		$('#arrow').click(function(){
+		$('#action').click(function(){
 			var addition = Math.random()*360;
 			var pool_size = $('#choices div:visible').size();
 			var winner_index = Math.ceil(Math.floor(360-addition)/(360/pool_size));
+			if ($('#action_icon').attr("src") == "roll.png"){
+				$("#choices div:visible").css("font-size", "100%");
+				$('#action_icon').attr("src","pin.png");
+			}	
 			
 			$('#pie').rotate({
 				angle	:	0,
@@ -65,7 +68,16 @@
 			$('#choices div:visible').each(function(){				
 				remain_color.push($(this).data('color'));
 			})
-			return remain_color;
+			var size = remain_color.length;
+			var distribution = [1,1,1,1,1,1,1,1,1,1,1,1,1,1].slice(0,size);
+			$('#pie').sparkline(
+				distribution,{
+					type	: 'pie',
+					width	: 500,
+					height	: 500,
+					sliceColors	: remain_color
+				}
+			);
 		}
 		
 		function display(winner_index){
@@ -76,6 +88,9 @@
 				}
 				i += 1;
 			})
+			if ($('#action_icon').attr("src") == "pin.png"){
+				$('#action_icon').attr("src","roll.png");
+			}	
 		}
 		
 		function get_random_color() {
@@ -91,11 +106,11 @@
 </script>
 <style>
 	body {
-		margin:0;
-		padding: 0;
-		border: 0;
+		margin-left: auto;
+		margin-right: auto;
 		text-align: center;
 		width: 960px;
+		
 	}
 	
 	img, div{
@@ -114,6 +129,7 @@
 		display: inline;
 		margin-right: 10px;
 		text-align: left;
+		white-space: nowrap;
 	}
 	
 	#main {
@@ -134,6 +150,10 @@
 		float: left;
 		padding-left: 50px;
 	}
+	
+	span {
+		white-space: nowrap;
+	}
 /*
 	
 	#pie{
@@ -141,7 +161,7 @@
 	}
 */
 	
-	#arrow img{
+	#action img{
 		display: inline;
 		padding-top: 230px;
 	}
@@ -248,7 +268,7 @@
 	<div id="spinner">
 		<div id="pie"></div>
 	</div>
-	<div id="arrow"><img src="http://icons.mysitemyway.com/wp-content/gallery/pink-jelly-icons-arrows/009121-pink-jelly-icon-arrows-arrowhead2-left.png" width=42 height=42></div>
+	<div id="action"><img src="roll.png" id="action_icon"></div>
 		
 	</div>
 </body>
