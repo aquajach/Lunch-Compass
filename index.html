@@ -13,18 +13,26 @@
 			color_list.push(get_random_color());
 			index += 1;
 		}
+		
 		index = 0;
+
 		$('#choices div').each(function(){
-			$(this).css('color', color_list[index]);
-			$(this).data('color', color_list[index]);
+			if (index < 12){
+				$(this).css('color', color_list[index + 2]);
+				$(this).data('color', color_list[index + 2]);				
+			}
+			else {
+				$(this).css('color', color_list[index - 12]);
+				$(this).data('color', color_list[index - 12]);					
+			}
 			index += 1;
 		})
-		
+
 		$('#pie').sparkline(
 			[1,1,1,1,1,1,1,1,1,1,1,1,1,1],{
 				type	: 'pie',
-				width	: 500,
-				height	: 500,
+				width	: 370,
+				height	: 370,
 				sliceColors	: color_list
 			}
 		);
@@ -51,7 +59,6 @@
 			var winner_index = Math.ceil(Math.floor(360-addition)/(360/pool_size));
 			if ($('#action_icon').attr("src") == "roll.png"){
 				$("#choices div:visible").css("font-size", "100%");
-				$('#action_icon').attr("src","pin.png");
 			}	
 			
 			$('#pie').rotate({
@@ -73,8 +80,8 @@
 			$('#pie').sparkline(
 				distribution,{
 					type	: 'pie',
-					width	: 500,
-					height	: 500,
+					width	: 370,
+					height	: 370,
 					sliceColors	: remain_color
 				}
 			);
@@ -106,6 +113,7 @@
 </script>
 <style>
 	body {
+		
 		margin-left: auto;
 		margin-right: auto;
 		text-align: center;
@@ -143,12 +151,18 @@
 		display: block;
 		float: left;
 	}
-	
+	#plate {
+		background-image: url('plate_background.jpeg');
+		background-repeat:no-repeat;
+		height: 500px;
+		margin-left: 300px;
+		padding-bottom: 200px;
+	}
 	#spinner{
-		width: 500px;
+		width: 560px;
 		display: block;
 		float: left;
-		padding-left: 50px;
+		padding-top: 100px;
 	}
 	
 	span {
@@ -265,10 +279,11 @@
 			</div>
 		</div>
 	</div>
-	<div id="spinner">
-		<div id="pie"></div>
-	</div>
-	<div id="action"><img src="roll.png" id="action_icon"></div>
-		
+	<div id="plate">
+		<div id="spinner">
+			<div id="pie"></div>
+		</div>
+		<div id="action"><img src="roll.png" id="action_icon"></div>
+	</div>	
 	</div>
 </body>
