@@ -38,7 +38,7 @@
 		);
 		
 		$('.selector span').click(function(){
-			if($(this).css("text-decoration") == "none") {
+			if (strpos($(this).css("text-decoration"),'none') !== false) {
 				var metadata = $(this).data("type") == 'restaurant' ? "data-name" : "data-" + $(this).data("type");
 				$('div[' + metadata + '="' + $(this).html() + '"]').hide();
 				$(this).css("text-decoration", "line-through");
